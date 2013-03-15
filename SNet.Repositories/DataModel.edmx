@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="DataModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="DataModel.Accounts" />
+          <EntitySet Name="Permissions" EntityType="DataModel.Permissions" />
+          <EntitySet Name="AccountPermissions" EntityType="DataModel.AccountPermissions" />
+          <EntitySet Name="Terms" EntityType="DataModel.Terms" />
+          <AssociationSet Name="AccountPermission_Account" Association="DataModel.AccountPermission_Account">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="AccountPermissions" EntitySet="AccountPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="AccountPermissions_Permissions" Association="DataModel.AccountPermissions_Permissions">
+            <End Role="Permissions" EntitySet="Permissions" />
+            <End Role="AccountPermissions" EntitySet="AccountPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="AccountsTerms" Association="DataModel.AccountsTerms">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Terms" EntitySet="Terms" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+          <Property Type="Boolean" Name="EmailVerified" Nullable="false" DefaultValue="False" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdateDate" Nullable="false" />
+          <Property Type="Time" Name="Timestamp" Nullable="false" />
+          <Property Type="Int32" Name="TermId" Nullable="true" />
+          <Property Type="DateTime" Name="AgreedToTermsDate" Nullable="false" />
+          <NavigationProperty Name="Account_PermissionAccounts" Relationship="DataModel.AccountPermission_Account" FromRole="Accounts" ToRole="AccountPermissions" />
+          <NavigationProperty Name="Terms" Relationship="DataModel.AccountsTerms" FromRole="Accounts" ToRole="Terms" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Timestamp" Nullable="false" />
+          <NavigationProperty Name="Permissions_AccountPermissions" Relationship="DataModel.AccountPermissions_Permissions" FromRole="Permissions" ToRole="AccountPermissions" />
+        </EntityType>
+        <EntityType Name="AccountPermissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AccoutId" Nullable="false" />
+          <Property Type="String" Name="PermissionId" Nullable="false" />
+          <Property Type="String" Name="Timestamp" Nullable="false" />
+          <NavigationProperty Name="AccountPermission_Accounts" Relationship="DataModel.AccountPermission_Account" FromRole="AccountPermissions" ToRole="Accounts" />
+          <NavigationProperty Name="Permissions" Relationship="DataModel.AccountPermissions_Permissions" FromRole="AccountPermissions" ToRole="Permissions" />
+        </EntityType>
+        <EntityType Name="Terms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Term" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Timestamp" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="DataModel.AccountsTerms" FromRole="Terms" ToRole="Accounts" />
+          <Property Type="Int32" Name="AccountsId" Nullable="false" />
+        </EntityType>
+        <Association Name="AccountPermission_Account">
+          <End Type="DataModel.Accounts" Role="Accounts" Multiplicity="*" />
+          <End Type="DataModel.AccountPermissions" Role="AccountPermissions" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountPermissions_Permissions">
+          <End Type="DataModel.Permissions" Role="Permissions" Multiplicity="*" />
+          <End Type="DataModel.AccountPermissions" Role="AccountPermissions" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountsTerms">
+          <End Type="DataModel.Accounts" Role="Accounts" Multiplicity="1" />
+          <End Type="DataModel.Terms" Role="Terms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Terms">
+              <PropertyRef Name="AccountsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DataModel" />
+        <Alias Key="Target" Value="DataModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="DataModelContainer" StorageEntityContainer="DataModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -11,7 +11,7 @@ namespace SNet.Web.Controllers
 {
 
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         //
         // GET: /Account/Index
