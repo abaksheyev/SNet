@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SNet.Repositories
+namespace SNet.Repositories.DataModel
 {
     using System;
     using System.Data.Entity;
@@ -25,9 +25,9 @@ namespace SNet.Repositories
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Accounts> Accounts { get; set; }
-        public DbSet<Permissions> Permissions { get; set; }
-        public DbSet<AccountPermissions> AccountPermissions { get; set; }
-        public DbSet<Terms> Terms { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
+        public DbSet<AccountPermission> AccountPermissions { get; set; }
+        public DbSet<Term> Terms { get; set; }
     }
 }

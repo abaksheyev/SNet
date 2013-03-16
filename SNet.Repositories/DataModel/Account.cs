@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SNet.Repositories
+namespace SNet.Repositories.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Accounts
+    public partial class Account
     {
-        public Accounts()
+        public Account()
         {
             this.EmailVerified = false;
-            this.Account_PermissionAccounts = new HashSet<AccountPermissions>();
-            this.Terms = new HashSet<Terms>();
         }
     
         public int Id { get; set; }
@@ -34,8 +32,5 @@ namespace SNet.Repositories
         public System.TimeSpan Timestamp { get; set; }
         public Nullable<int> TermId { get; set; }
         public System.DateTime AgreedToTermsDate { get; set; }
-    
-        public virtual ICollection<AccountPermissions> Account_PermissionAccounts { get; set; }
-        public virtual ICollection<Terms> Terms { get; set; }
     }
 }

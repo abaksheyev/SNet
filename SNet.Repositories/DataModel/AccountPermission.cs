@@ -7,22 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SNet.Repositories
+namespace SNet.Repositories.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Permissions
+    public partial class AccountPermission
     {
-        public Permissions()
-        {
-            this.Permissions_AccountPermissions = new HashSet<AccountPermissions>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string AccoutId { get; set; }
+        public string PermissionId { get; set; }
         public string Timestamp { get; set; }
-    
-        public virtual ICollection<AccountPermissions> Permissions_AccountPermissions { get; set; }
     }
 }

@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SNet.Repositories
+namespace SNet.Repositories.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Terms
+    public partial class Term
     {
         public int Id { get; set; }
-        public string Term { get; set; }
+        public string Terms { get; set; }
         public string Timestamp { get; set; }
         public int AccountsId { get; set; }
-    
-        public virtual Accounts Account { get; set; }
     }
 }

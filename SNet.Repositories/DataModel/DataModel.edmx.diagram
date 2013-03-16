@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8e46305a152748b8b9e798a33d72a9d5" Name="Diagram1" >
+        <EntityTypeShape EntityType="DataModel.Account" Width="1.5" PointX="6.875" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Permission" Width="1.5" PointX="2.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.AccountPermission" Width="2.375" PointX="1.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Term" Width="2.375" PointX="5.25" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.AccountsTerms" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
