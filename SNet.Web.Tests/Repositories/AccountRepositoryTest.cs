@@ -17,29 +17,42 @@ namespace SNet.Web.Tests.Controllers
     public class AccountRepositoryTest
     {
         [TestMethod]
-        public void Create_New_Account()
+        public void Account_Create_New()
         {
-            DataModelContainer context = new DataModelContainer();
-            IAccountRepository rep = new AccountRepository(context);
+            using (var context = new DataModelContainer())
+            {
+                var rep = new AccountRepository(context);
 
-            var account = rep.Create();
-            account.FirstName = "FirstName";
-            account.LastName = "LastName";
-            account.Email = "Email";
-            account.EmailVerified = false;
-            account.Username = "Username";
-            account.Password = "Password";
+                var account = rep.Create();
+                account.FirstName = "FirstName";
+                account.LastName = "LastName";
+                account.Email = "Email";
+                account.EmailVerified = false;
+                account.Username = "Username";
+                account.Password = "Password";
 
-            account.BirthDate = SqlDateTime.MaxValue.Value;
-            account.CreateDate = SqlDateTime.MaxValue.Value;
-            account.LastUpdateDate = SqlDateTime.MaxValue.Value;
+                account.BirthDate = SqlDateTime.MaxValue.Value;
+                account.CreateDate = SqlDateTime.MaxValue.Value;
+                account.LastUpdateDate = SqlDateTime.MaxValue.Value;
 
 
-            rep.Add(account);
+                rep.Add(account);
 
-            rep.SaveChanges();
+                rep.SaveChanges();
 
+            }
         }
 
+        [TestMethod]
+        public void Account_Delete()
+        {
+            throw new NotImplementedException(); 
+        }
+
+        [TestMethod]
+        public void Account_Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
