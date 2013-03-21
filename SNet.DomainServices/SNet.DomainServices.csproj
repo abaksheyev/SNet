@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Interfaces\IEmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

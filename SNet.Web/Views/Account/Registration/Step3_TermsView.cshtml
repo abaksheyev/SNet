@@ -1,0 +1,39 @@
+﻿@model SNet.Web.Models.Account.RegistrationAccountModel
+
+@section Header
+{
+    @Model.Header
+}
+
+
+@{
+    var ajaxOptions =
+        new AjaxOptions
+            {
+                UpdateTargetId = "page-content",
+                HttpMethod = "post"
+            };
+}
+
+@using (Ajax.BeginForm(MVC.Account.RegistrationProcessing(), ajaxOptions, new {id = "ajaxForm"}))
+{
+    @Html.HiddenFor(x => x.CurrentStep)
+
+
+     <button 
+        type="submit" 
+        data-theme="b" 
+        name="submit" 
+        value="step2" 
+        class="ui-btn-hidden" 
+        aria-disabled="false">Next</button>
+    
+    <button 
+        type="submit" 
+        data-theme="b" 
+        name="submit" 
+        value="step4" 
+        class="ui-btn-hidden" 
+        aria-disabled="false">Previouse</button>
+
+}

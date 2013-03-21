@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace SNet.Web.Controllers
 {
-    public class BaseController : Controller
+    public partial class BaseController : Controller
     {
       
     }

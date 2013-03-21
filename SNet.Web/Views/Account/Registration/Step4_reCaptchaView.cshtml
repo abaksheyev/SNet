@@ -1,0 +1,47 @@
+﻿@using SNet.Web.Helpers
+@model SNet.Web.Models.Account.RegistrationAccountModel
+
+@section Header
+{
+    @Model.Header
+}
+
+@{
+    var ajaxOptions =
+        new AjaxOptions
+            {
+                UpdateTargetId = "page-content",
+                HttpMethod = "post"
+            };
+}
+
+
+@using (Ajax.BeginForm(MVC.Account.RegistrationProcessing(), ajaxOptions, new {id = "ajaxForm"}))
+{
+    @Html.HiddenFor(x => x.CurrentStep)
+
+   <div id="myCaptcha"></div>
+        <script type="text/javascript">
+            Recaptcha.destroy();
+            Recaptcha.create("6Lds89QSAAAAAHgyt0U3UGeNITSvKfPS2M5a-uRp", "myCaptcha", {
+                theme: "clean"
+            });
+</script>
+    
+     <button 
+        type="submit" 
+        data-theme="b" 
+        name="submit" 
+        value="step3" 
+        class="ui-btn-hidden" 
+        aria-disabled="false">Previous</button>
+    
+    <button 
+        type="submit" 
+        data-theme="b" 
+        name="submit" 
+        value="finish" 
+        class="ui-btn-hidden" 
+        aria-disabled="false">Finish</button>
+
+}

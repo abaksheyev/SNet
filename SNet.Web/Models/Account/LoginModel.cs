@@ -20,4 +20,5 @@ namespace SNet.Web.Models.Account
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
+
 }

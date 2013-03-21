@@ -29,6 +29,7 @@ namespace SNet.Web.App_Start {
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
             
+
         }
     }
 }
