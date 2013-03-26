@@ -1,4 +1,8 @@
-﻿@model SNet.Web.Models.Account.RegistrationAccountModel
+﻿
+@using SNet.Common
+@using SNet.Web.Helpers;
+
+@model SNet.Web.Models.Account.RegistrationAccoutStep1Model
 
 
 @section Header
@@ -17,10 +21,21 @@
 
 @using (Ajax.BeginForm(MVC.Account.RegistrationProcessing(), ajaxOptions, new {id = "ajaxForm"}))
 {
-    @Html.HiddenFor(x => x.CurrentStep)
 
+    @Html.LocalizedLabelFor(x=>x.Email)
+    @Html.EditorFor(x=>x.Email)
+
+    @Html.LocalizedLabelFor(x=>x.Username)
+    @Html.EditorFor(x=>x.Username)
 
     
+    @Html.LocalizedLabelFor(x=>x.Password)
+    @Html.EditorFor(x=>x.Password)
+
+    @Html.LocalizedLabelFor(x=>x.VerifyPassword)
+    @Html.EditorFor(x=>x.VerifyPassword)
+
+        
     <button 
         type="submit" 
         data-theme="b" 

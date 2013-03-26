@@ -8,25 +8,7 @@ namespace SNet.Web.Models.Account
 {
     public class RegistrationAccountModel
     {
-        #region -- Step#1 Create Account --
-
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Display(Name = "Username")]
-        public string Username { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Verify Password")]
-        public string VerifyPassword { get; set; }
-
-        #endregion
-
+       
         #region-- Step#2 About You--
 
         [Display(Name = "BirthDay")]
@@ -43,6 +25,8 @@ namespace SNet.Web.Models.Account
         public string Header { get; set; }
 
         public RegistrationStep CurrentStep { get; set; }
+
+
     }
 
     public enum RegistrationStep

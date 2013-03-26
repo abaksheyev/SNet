@@ -15,7 +15,7 @@ namespace SNet.Web.Controllers
     {
         public virtual ActionResult Index()
         {
-            return View(MVC.Account.Views.Registration.Step1_CreateAccountView, new RegistrationAccountModel());
+            return View(MVC.Account.Views.Registration.Step1_CreateAccountView, new RegistrationAccoutStep1Model());
         }
 
         [HttpGet]
@@ -26,9 +26,6 @@ namespace SNet.Web.Controllers
 
         public virtual ActionResult RegistrationProcessing(RegistrationAccountModel model, string submit = "step1")
         {
-
-
-
             switch (submit)
             {
                 case "step2":
@@ -49,9 +46,9 @@ namespace SNet.Web.Controllers
 
         private ActionResult Step1_CreateAccountView(RegistrationAccountModel model)
         {
-            model.Header = "CreateAccount";
-            model.CurrentStep = RegistrationStep.CreateAccount;
-            return View(MVC.Account.Views.Registration.Step1_CreateAccountView, model);
+            var modelView = new RegistrationAccoutStep1Model();
+
+            return View(MVC.Account.Views.Registration.Step1_CreateAccountView, modelView);
         }
 
         private ActionResult Step2_AboutYouView(RegistrationAccountModel model)
