@@ -9,13 +9,14 @@ using SNet.Repositories.DataModel;
 
 namespace SNet.Repositories
 {
-    public class AccountRepository : 
-        BaseRepository<DbContext, Account>, 
-        IAccountRepository
+    public class AccountRepository : BaseRepository<DbContext, Account>, IAccountRepository
     {
-        public AccountRepository(DbContext context)
-            : base(context)
+        public AccountRepository() :
+            base(new DbContext(@"Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-SNet.Web-20130315233806;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-SNet.Web-20130315233806.mdf"))
         {
+
+
+
         }
     }
 }

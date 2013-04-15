@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +7,7 @@ using SNet.DomainServices.Interfaces;
 
 namespace SNet.DomainServices
 {
-    public class EmailService : IEmailService
+    public class LogService : ILogService
     {
     }
 }

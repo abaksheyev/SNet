@@ -107,6 +107,15 @@
   <ItemGroup>
     <Content Include="DataModel\DataModel.edmx.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SNet.Common\SNet.Common.csproj">
+      <Project>{13d985e2-6dc0-4c13-8b9f-7096e1955267}</Project>
+      <Name>SNet.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

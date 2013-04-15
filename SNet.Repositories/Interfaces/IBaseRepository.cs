@@ -12,6 +12,9 @@ namespace SNet.Repositories
     {
         TEntity Create();
         void Add(TEntity entity);
+
+        void Update(TEntity entity);
+
         void Delete(TEntity entity);
         IQueryable<TEntity> GetAll();
 

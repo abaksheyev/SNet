@@ -26,6 +26,11 @@ namespace SNet.Repositories
             Context.Set<TEntity>().Add(entity);
         }
 
+        public void Update(TEntity entity)
+        {
+            var entry = Context.Entry<TEntity>(entity);
+        }
+
         public IQueryable<TEntity> GetAll()
         {
             return Context.Set<TEntity>().AsQueryable<TEntity>();

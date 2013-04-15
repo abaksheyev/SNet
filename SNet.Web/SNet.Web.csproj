@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -48,7 +51,7 @@
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Recaptcha">
-      <HintPath>C:\Users\AAnthony\Downloads\Recaptcha.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\recaptcha-dotnet-1.0.5.0-binary\Recaptcha.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
@@ -140,7 +143,14 @@
   <ItemGroup>
     <Compile Include="Attributes\Validations\Required.cs" />
     <Compile Include="Helpers\MvcHtmlStringHelper.cs" />
-    <Compile Include="Models\Account\RegistrationAccoutStep1Model.cs" />
+    <Compile Include="Mapping\UIMapping.cs" />
+    <Compile Include="Models\Account\AccountModel.cs" />
+    <Compile Include="Models\Account\Registration\RegistrationAccoutStep4Model.cs" />
+    <Compile Include="Models\Account\Registration\RegistrationAccoutStep2Model.cs" />
+    <Compile Include="Models\Account\Registration\RegistrationAccoutStep3Model.cs" />
+    <Compile Include="Models\Account\Registration\RegistrationAccoutStep1Model.cs" />
+    <Compile Include="Models\Account\Registration\RegistrationAccoutStepBase.cs" />
+    <Compile Include="Models\Account\Registration\RegistrationAccoutStep5FinishModel.cs" />
     <Compile Include="Properties\Resources.ru.Designer.cs">
       <DependentUpon>Resources.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -151,18 +161,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.en.resx</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\AccountController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DIConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="T4MVC\BaseController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -171,10 +175,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account\RegistrationAccountModel.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
-    <Compile Include="Models\Account\RegistrationModel.cs" />
+    <Compile Include="Models\Account\Registration\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T4MVC\AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\BaseController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -295,6 +304,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Account\Registration\Step5_Finish.cshtml" />
+    <Content Include="Views\AllAccountsView.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

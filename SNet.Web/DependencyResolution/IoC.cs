@@ -16,6 +16,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
+using SNet.DomainServices;
+using SNet.DomainServices.Interfaces;
 using StructureMap;
 namespace SNet.Web.DependencyResolution {
     public static class IoC {
@@ -27,8 +29,17 @@ namespace SNet.Web.DependencyResolution {
                                         scan.TheCallingAssembly();
                                         scan.WithDefaultConventions();
                                     });
-            //                x.For<IExample>().Use<Example>();
+
+
+                            x.For<IAccountService>().HttpContextScoped().Use<AccountService>();
+
+                            /* Configure service DI*/
+                            DIDomainServices.Cofigure(x);
+
                         });
+
+
+
             return ObjectFactory.Container;
         }
     }

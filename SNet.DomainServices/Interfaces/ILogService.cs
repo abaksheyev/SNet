@@ -1,14 +1,12 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SNet.DomainServices.Interfaces;
 
-namespace SNet.DomainServices
+namespace SNet.DomainServices.Interfaces
 {
-    public class EmailService : IEmailService
+    public interface ILogService
     {
     }
 }

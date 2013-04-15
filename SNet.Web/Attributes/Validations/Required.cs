@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using SNet.Common;
 
 namespace SNet.Web.Attributes.Validations
 {
-    public class Required : ValidationAttribute
+    public class RequiredLocalized : ValidationAttribute
     {
-        public Required()
+        public RequiredLocalized()
         {
+            ErrorMessage = Settings.Instance.GetLocalizedText("Filed_IsRequired");
         }
     }
 }

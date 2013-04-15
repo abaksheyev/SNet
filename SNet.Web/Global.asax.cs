@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Recaptcha;
 using SNet.Web.App_Start;
+using SNet.Web.DependencyResolution;
 
 namespace SNet.Web
 {
@@ -26,13 +27,10 @@ namespace SNet.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-           // StructuremapMvc.Start();
-
-            // Init DI for DomainSerivces
-           // DomainServices.DI.Instance.Init();
             
             RecaptchaControlMvc.PrivateKey = "6Lds89QSAAAAADxKjN8N9jxwyzmx_WkXXo7YBA6D";
             RecaptchaControlMvc.PublicKey = "6Lds89QSAAAAAHgyt0U3UGeNITSvKfPS2M5a-uRp";
         }
+
     }
 }

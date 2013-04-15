@@ -1,4 +1,4 @@
-﻿@model SNet.Web.Models.Account.RegistrationAccountModel
+﻿@model SNet.Web.Models.Account.RegistrationAccoutStep2Model
 
 @section Header
 {
@@ -16,22 +16,22 @@
 
 @using (Ajax.BeginForm(MVC.Account.RegistrationProcessing(), ajaxOptions, new {id = "ajaxForm"}))
 {
-    @Html.HiddenFor(x => x.CurrentStep)
-
+    
 
      <button 
         type="submit" 
         data-theme="b" 
         name="submit" 
-        value="step1" 
+        value="step#1" 
         class="ui-btn-hidden" 
         aria-disabled="false">Next</button>
+    
     
     <button 
         type="submit" 
         data-theme="b" 
         name="submit" 
-        value="step3" 
+        value="step#3" 
         class="ui-btn-hidden" 
         aria-disabled="false">Previouse</button>
 

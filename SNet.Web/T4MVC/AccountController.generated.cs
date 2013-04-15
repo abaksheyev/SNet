@@ -25,9 +25,6 @@ namespace SNet.Web.Controllers
     public partial class AccountController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AccountController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected AccountController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -68,6 +65,7 @@ namespace SNet.Web.Controllers
         {
             public readonly string Index = "Index";
             public readonly string RegistrationProcessing = "RegistrationProcessing";
+            public readonly string GetAllContacts = "GetAllContacts";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -75,6 +73,7 @@ namespace SNet.Web.Controllers
         {
             public const string Index = "Index";
             public const string RegistrationProcessing = "RegistrationProcessing";
+            public const string GetAllContacts = "GetAllContacts";
         }
 
 
@@ -84,8 +83,7 @@ namespace SNet.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_RegistrationProcessing
         {
-            public readonly string model = "model";
-            public readonly string submit = "submit";
+            public readonly string nextStep = "nextStep";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,11 +109,13 @@ namespace SNet.Web.Controllers
                     public readonly string Step2_AboutYouView = "Step2_AboutYouView";
                     public readonly string Step3_TermsView = "Step3_TermsView";
                     public readonly string Step4_reCaptchaView = "Step4_reCaptchaView";
+                    public readonly string Step5_Finish = "Step5_Finish";
                 }
                 public readonly string Step1_CreateAccountView = "~/Views/Account/Registration/Step1_CreateAccountView.cshtml";
                 public readonly string Step2_AboutYouView = "~/Views/Account/Registration/Step2_AboutYouView.cshtml";
                 public readonly string Step3_TermsView = "~/Views/Account/Registration/Step3_TermsView.cshtml";
                 public readonly string Step4_reCaptchaView = "~/Views/Account/Registration/Step4_reCaptchaView.cshtml";
+                public readonly string Step5_Finish = "~/Views/Account/Registration/Step5_Finish.cshtml";
             }
         }
     }
@@ -127,21 +127,24 @@ namespace SNet.Web.Controllers
 
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
-        public override System.Web.Mvc.ActionResult Index()
+ 
+
+        partial void RegistrationProcessingOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string nextStep);
+
+        public override System.Web.Mvc.ActionResult RegistrationProcessing(string nextStep)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RegistrationProcessing);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "nextStep", nextStep);
+            RegistrationProcessingOverride(callInfo, nextStep);
             return callInfo;
         }
 
-        partial void RegistrationProcessingOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, SNet.Web.Models.Account.RegistrationAccountModel model, string submit);
+        partial void GetAllContactsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
-        public override System.Web.Mvc.ActionResult RegistrationProcessing(SNet.Web.Models.Account.RegistrationAccountModel model, string submit)
+        public override System.Web.Mvc.ActionResult GetAllContacts()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RegistrationProcessing);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "submit", submit);
-            RegistrationProcessingOverride(callInfo, model, submit);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetAllContacts);
+            GetAllContactsOverride(callInfo);
             return callInfo;
         }
 

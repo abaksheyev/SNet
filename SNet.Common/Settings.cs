@@ -7,6 +7,9 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web.Hosting;
+using System.IO;
+
 using SNet.Common.Enums;
 
 namespace SNet.Common
@@ -31,6 +34,11 @@ namespace SNet.Common
            
         }
 
+        public string RootPath
+        {
+            get { return HostingEnvironment.MapPath("~/"); }
+        }
+
         public string GetLocalizedText(string keyField)
         {
             Dictionary<string, string> values = new Dictionary<string, string>();
@@ -38,8 +46,10 @@ namespace SNet.Common
 
             if (CurrentUiLanguage == UILanguage.Russian)
             {
+                var path = Path.Combine(Settings.Instance.RootPath, @"..\SNet.Common\Resources\Resources.ru.resx");
+
                 // Enumerate the resources in the file.
-                ResXResourceReader rsxr = new ResXResourceReader(@"H:\GitHub\SNet\SNet.Common\Resources\Resources.ru.resx");
+                ResXResourceReader rsxr = new ResXResourceReader(path);
 
               
                 // Create an IDictionaryEnumerator to iterate through the resources.
@@ -69,9 +79,6 @@ namespace SNet.Common
 
     internal enum Thems
     {
-
+            
     }
-    
-
-
 }

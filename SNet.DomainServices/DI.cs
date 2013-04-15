@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SNet.Common;
+using SNet.Repositories;
+using SNet.Interfaces;
+using System.Data.Entity;
 
 namespace SNet.DomainServices
 {
-    public class DI : Singleton<DI> 
+    public static class DIDomainServices
     {
-        public void Init()
+
+        public static void Cofigure(StructureMap.IInitializationExpression x)
         {
-            //
-            // todo: Configuration Castle
-            //
-        } 
+            x.For<IAccountRepository>().HttpContextScoped().Use<AccountRepository>();
+        }
     }
 }
